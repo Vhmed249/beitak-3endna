@@ -18,84 +18,27 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: '17'
+          java-version: "17"
 
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
+          flutter-version: "3.24.3"
           channel: stable
-          cache: true
 
-      - name: Flutter Doctor
-        run: flutter doctor -v
-
-      - name: Clean project
-        run: flutter clean
+      - name: Install Android SDK
+        run: |
+          yes | sdkmanager --licenses
+          sdkmanager "platforms;android-36" "build-tools;36.0.0"
 
       - name: Get dependencies
         run: flutter pub get
 
-      - name: Analyze
-        run: flutter analyze --no-fatal-infos --no-fatal-warnings
-
-
-      - name: Create Android release keystore
-        run: |
-          keytool -genkeypair \
-            -keystore android/app/beitak-3endna-keystore.jks \
-            -storepass 123456 \
-            -keypass 123456 \
-            -alias beitak3endna \
-            -keyalg RSA \
-            -keysize 2048 \
-            -validity 10000 \
-            -dname "CN=Beitak 3endna, OU=Android, O=Beitak3endna, L=Khartoum, ST=Sudan, C=SD"
-
-          cat > android/key.properties <<EOF
-          storePassword=123456
-          keyPassword=123456
-          keyAlias=beitak3endna
-          storeFile=beitak-3endna-keystore.jks
-          EOF
-
       - name: Build APK
-        run: |
-          flutter build apk --release --verbose 2>&1 | tee build.log
-
-      - name: Check APK
-        run: |
-          echo "Checking APK output..."
-          ls -la build/app/outputs/flutter-apk/ || true
+        run: flutter build apk --release
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: app-release
+          name: beitak-3endna-apk
           path: build/app/outputs/flutter-apk/app-release.apk
-
-      - name: Show build files
-        if: always()
-        run: |
-          echo "===== BUILD ====="
-          ls -R build || true
-          echo "===== ANDROID BUILD ====="
-          ls -R android/app/build || true
-
-
-      - name: Upload build log
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: gradle-build-log
-          path: build.log
-
-
-      - name: Gradle diagnostics
-        if: always()
-        run: |
-          echo "===== android folder ====="
-          ls -la android
-          echo "===== gradle files ====="
-          find android -name "*.gradle" -o -name "gradle-wrapper.properties"
-          echo "===== build folder ====="
-          find . -maxdepth 4 -type d -name build
