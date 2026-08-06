@@ -256,7 +256,7 @@ class _SearchScreenState extends State<SearchScreen> {
         labelText: 'الولاية',
         border: OutlineInputBorder(borderRadius: BorderRadius.zero),
       ),
-      initialValue: _selectedState,
+      value: _selectedState,
       items: [
         const DropdownMenuItem<String?>(value: null, child: Text('الكل')),
         ...states.map(
@@ -280,7 +280,7 @@ class _SearchScreenState extends State<SearchScreen> {
         labelText: 'المدينة',
         border: OutlineInputBorder(borderRadius: BorderRadius.zero),
       ),
-      initialValue: _selectedCity,
+      value: _selectedCity,
       items: [
         const DropdownMenuItem<String?>(value: null, child: Text('الكل')),
         ...cities.map(
@@ -308,7 +308,7 @@ class _SearchScreenState extends State<SearchScreen> {
         labelText: 'الحي',
         border: OutlineInputBorder(borderRadius: BorderRadius.zero),
       ),
-      initialValue: _selectedNeighborhood,
+      value: _selectedNeighborhood,
       items: [
         const DropdownMenuItem<String?>(value: null, child: Text('الكل')),
         ...neighborhoods.map(
@@ -418,7 +418,7 @@ class _SearchScreenState extends State<SearchScreen> {
         labelText: 'المفروشات',
         border: OutlineInputBorder(borderRadius: BorderRadius.zero),
       ),
-      initialValue: _furnished,
+      value: _furnished,
       items: [
         const DropdownMenuItem<String?>(value: null, child: Text('الكل')),
         const DropdownMenuItem<String?>(value: 'مفروش', child: Text('مفروش')),
@@ -444,7 +444,7 @@ class _SearchScreenState extends State<SearchScreen> {
         labelText: 'ترتيب حسب',
         border: OutlineInputBorder(borderRadius: BorderRadius.zero),
       ),
-      initialValue: _sortBy,
+      value: _sortBy,
       items: [
         const DropdownMenuItem<String?>(value: null, child: Text('الأحدث')),
         const DropdownMenuItem<String?>(

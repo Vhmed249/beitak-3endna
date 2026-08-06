@@ -115,7 +115,7 @@ class _PropertyDetailScreenState extends State<PropertyDetailScreen> {
                   shadows: [
                     Shadow(
                       blurRadius: 10,
-                      color: Colors.black.withValues(alpha: 0.5),
+                      color: Colors.black.withOpacity(0.5),
                     ),
                   ],
                 ),
@@ -313,7 +313,7 @@ class _PropertyDetailScreenState extends State<PropertyDetailScreen> {
           child: Container(
             padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
             decoration: BoxDecoration(
-              color: Colors.black.withValues(alpha: 0.6),
+              color: Colors.black.withOpacity(0.6),
               borderRadius: BorderRadius.circular(20),
             ),
             child: Text(
@@ -387,7 +387,7 @@ class _PropertyDetailScreenState extends State<PropertyDetailScreen> {
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
         decoration: BoxDecoration(
-          color: color.withValues(alpha: 0.1),
+          color: color.withOpacity(0.1),
           borderRadius: BorderRadius.circular(12),
         ),
         child: Column(

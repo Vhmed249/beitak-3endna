@@ -55,7 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
         currentIndex: _currentIndex,
         type: BottomNavigationBarType.fixed,
         selectedItemColor: AppColors.primary,
-        unselectedItemColor: AppColors.textDark.withValues(alpha: 0.6),
+        unselectedItemColor: AppColors.textDark.withOpacity(0.6),
         onTap: (index) {
           if (index == 2) {
             _openAddProperty();

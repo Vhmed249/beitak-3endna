@@ -64,7 +64,7 @@ class _SplashScreenState extends State<SplashScreen> {
               width: 120,
               height: 120,
               decoration: BoxDecoration(
-                color: AppColors.white.withValues(alpha: 0.2),
+                color: AppColors.white.withOpacity(0.2),
                 shape: BoxShape.circle,
               ),
               child: const Icon(
@@ -87,7 +87,7 @@ class _SplashScreenState extends State<SplashScreen> {
               AppConstants.slogan,
               style: TextStyle(
                 fontSize: 16,
-                color: AppColors.white.withValues(alpha: 0.8),
+                color: AppColors.white.withOpacity(0.8),
               ),
             ),
             const SizedBox(height: 40),

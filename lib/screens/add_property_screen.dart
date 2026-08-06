@@ -305,7 +305,7 @@ class _AddPropertyScreenState extends State<AddPropertyScreen> {
                   Expanded(
                     child: DropdownButtonFormField<String>(
                       decoration: const InputDecoration(labelText: 'المفروشات'),
-                      initialValue: _selectedFurnished,
+                      value: _selectedFurnished,
                       items: ['مفروش', 'غير مفروش', 'نصف مفروش']
                           .map(
                             (f) => DropdownMenuItem<String>(
@@ -345,7 +345,7 @@ class _AddPropertyScreenState extends State<AddPropertyScreen> {
               const SizedBox(height: 10),
               DropdownButtonFormField<String>(
                 decoration: const InputDecoration(labelText: 'الولاية *'),
-                initialValue: _selectedState,
+                value: _selectedState,
                 items: AppConstants.states
 .map(
                       (s) => DropdownMenuItem<String>(value: s, child: Text(s)),
@@ -363,7 +363,7 @@ class _AddPropertyScreenState extends State<AddPropertyScreen> {
               const SizedBox(height: 10),
               DropdownButtonFormField<String>(
                 decoration: const InputDecoration(labelText: 'المدينة *'),
-                initialValue: _selectedCity,
+                value: _selectedCity,
                 items: cities
                     .map(
                       (c) => DropdownMenuItem<String>(value: c, child: Text(c)),
@@ -381,7 +381,7 @@ class _AddPropertyScreenState extends State<AddPropertyScreen> {
               if (neighborhoods.isNotEmpty)
                 DropdownButtonFormField<String>(
                   decoration: const InputDecoration(labelText: 'الحي (اختياري)'),
-                  initialValue: _selectedNeighborhood,
+                  value: _selectedNeighborhood,
                   items: neighborhoods
                       .map(
                         (n) =>
@@ -394,7 +394,7 @@ class _AddPropertyScreenState extends State<AddPropertyScreen> {
               const SizedBox(height: 10),
               DropdownButtonFormField<String>(
                 decoration: const InputDecoration(labelText: 'نوع العقار *'),
-                initialValue: _selectedCategory,
+                value: _selectedCategory,
                 items: AppConstants.categories
                     .map(
                       (c) => DropdownMenuItem<String>(value: c, child: Text(c)),
@@ -406,7 +406,7 @@ class _AddPropertyScreenState extends State<AddPropertyScreen> {
               const SizedBox(height: 10),
               DropdownButtonFormField<String>(
                 decoration: const InputDecoration(labelText: 'نوع الإيجار *'),
-                initialValue: _selectedRentType,
+                value: _selectedRentType,
                 items: AppConstants.rentTypes
                     .map(
                       (r) => DropdownMenuItem<String>(value: r, child: Text(r)),

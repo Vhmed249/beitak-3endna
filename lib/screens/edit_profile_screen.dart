@@ -103,7 +103,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               onTap: _pickImage,
               child: CircleAvatar(
                 radius: 60,
-                backgroundColor: AppColors.primary.withValues(alpha: 0.2),
+                backgroundColor: AppColors.primary.withOpacity(0.2),
                 backgroundImage: _profileImage != null
                     ? FileImage(_profileImage!)
                     : null,
