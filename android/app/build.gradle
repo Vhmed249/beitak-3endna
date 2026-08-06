@@ -64,7 +64,7 @@ android {
             if (keystorePropertiesFile.exists()) {
                 signingConfig = signingConfigs.release
             } else {
-                signingConfig = signingConfigs.debug
+                throw new GradleException("Release keystore not configured")
             }
             
             minifyEnabled = false
