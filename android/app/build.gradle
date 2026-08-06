@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace = "com.beitak3endna.app"
-    compileSdk 36
+    compileSdk 35
     ndkVersion = "25.1.8937393"
 
     compileOptions {
@@ -27,7 +27,7 @@ android {
     defaultConfig {
         applicationId = "com.beitak3endna.app"
         minSdk = 21
-        targetSdk = 36
+        targetSdk = 35
         versionCode = flutter.versionCode
         versionName = flutter.versionName
         multiDexEnabled = true
