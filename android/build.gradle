@@ -12,15 +12,13 @@ subprojects {
     project.evaluationDependsOn(":app")
 
     if (project.name != "app") {
-        afterEvaluate { proj ->
-            if (proj.plugins.hasPlugin("com.android.library")) {
-                proj.android {
-                    if (namespace == null) {
-                        namespace proj.group
-                    }
-                    compileSdkVersion 35
-                }
-            }
+        project.ext {
+            flutter = [
+                compileSdkVersion: 35,
+                minSdkVersion: 21,
+                targetSdkVersion: 35,
+                ndkVersion: "25.1.8937393"
+            ]
         }
     }
 }
