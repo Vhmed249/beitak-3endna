@@ -52,7 +52,8 @@ jobs:
         run: flutter analyze
 
       - name: Build APK Release
-flutter build apk --release --verbose 2>&1 | tee build.log
+        run: |
+          flutter build apk --release --verbose 2>&1 | tee build.log
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
