@@ -31,6 +31,15 @@ jobs:
           yes | sdkmanager --licenses
           sdkmanager "platforms;android-36" "build-tools;36.0.0"
 
+      - name: Setup Keystore
+        run: |
+          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > android/app/beitak-3endna-keystore.jks
+
+          echo "storePassword=${{ secrets.KEYSTORE_PASSWORD }}" > android/key.properties
+          echo "keyPassword=${{ secrets.KEY_PASSWORD }}" >> android/key.properties
+          echo "keyAlias=${{ secrets.KEY_ALIAS }}" >> android/key.properties
+          echo "storeFile=beitak-3endna-keystore.jks" >> android/key.properties
+
       - name: Get dependencies
         run: flutter pub get
 
