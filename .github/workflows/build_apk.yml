@@ -11,8 +11,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
       - name: Checkout
         uses: actions/checkout@v4
+
 
       - name: Setup Java
         uses: actions/setup-java@v4
@@ -20,36 +22,50 @@ jobs:
           distribution: temurin
           java-version: "17"
 
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
           flutter-version: "3.24.3"
           channel: stable
+          cache: true
 
-      - name: Install Android SDK
+
+      - name: Install Android SDK Platform
         run: |
-          yes | sdkmanager --licenses
           sdkmanager "platforms;android-36" "build-tools;36.0.0"
 
-      - name: Create Release Keystore
+
+      - name: Setup Release Keystore
         run: |
           echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > android/app/beitak-3endna-keystore.jks
 
-          cat > android/key.properties <<EOF2
+          cat > android/key.properties <<KEYEOF
           storePassword=${{ secrets.KEYSTORE_PASSWORD }}
           keyPassword=${{ secrets.KEY_PASSWORD }}
           keyAlias=${{ secrets.KEY_ALIAS }}
           storeFile=beitak-3endna-keystore.jks
-          EOF2
+          KEYEOF
 
-      - name: Get dependencies
+
+      - name: Flutter Pub Get
         run: flutter pub get
+
+
+      - name: Flutter Analyze
+        run: flutter analyze
+
 
       - name: Build APK Release
         run: flutter build apk --release --verbose
 
+
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: beitak-3endna-apk
+          name: beitak-3endna-release-apk
           path: build/app/outputs/flutter-apk/app-release.apk
